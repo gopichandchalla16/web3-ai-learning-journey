@@ -25,10 +25,14 @@ web3-ai-learning-journey/
 │   ├── notes.md
 │   └── metamask-setup.md
 ├── day-02-hashing-blocks-chains/
-│   ├── blockchain.py          ← mini blockchain from scratch
+│   ├── blockchain.py
 │   ├── notes.md
 │   └── sha256-demo.md
-├── day-03-smart-contracts/       ← coming soon
+├── day-03-smart-contracts/
+│   ├── HelloWorld.sol         ← first Solidity contract
+│   ├── SimpleStorage.sol      ← mappings + msg.sender
+│   ├── notes.md
+│   └── evm-explained.md
 ├── day-04-erc20-tokens/          ← coming soon
 ├── day-05-defi-uniswap/          ← coming soon
 ├── day-06-ai-agent-onchain/      ← coming soon
@@ -44,7 +48,7 @@ web3-ai-learning-journey/
 |:---:|:---|:---|:---|:---:|
 | ✅ 01 | Mar 04, 2026 | Wallets, Transactions, MetaMask | MetaMask setup + first test ETH | Done |
 | ✅ 02 | Mar 05, 2026 | Hashing, Blocks, Chains, PoW vs PoS | [Mini Blockchain in Python](./day-02-hashing-blocks-chains/blockchain.py) | Done |
-| 🔄 03 | Mar 06, 2026 | Smart Contracts, Solidity basics | Coming | In Progress |
+| ✅ 03 | Mar 06, 2026 | Smart Contracts, Solidity, EVM | [HelloWorld.sol](./day-03-smart-contracts/HelloWorld.sol) + [SimpleStorage.sol](./day-03-smart-contracts/SimpleStorage.sol) | Done |
 | ⏳ 04 | Mar 07, 2026 | ERC-20 Tokens | Coming | Upcoming |
 | ⏳ 05 | Mar 08, 2026 | DeFi — Uniswap, liquidity pools | Coming | Upcoming |
 | ⏳ 06 | Mar 09, 2026 | AI Agent on-chain | Coming | Upcoming |
@@ -65,17 +69,26 @@ web3-ai-learning-journey/
 - How blocks chain together via prev_hash
 - What is a nonce and Proof of Work
 - Proof of Work vs Proof of Stake (The Merge)
-- Built a working blockchain in 40 lines of Python
+- Built a working blockchain in 60 lines of Python
 - Proved immutability by tampering and breaking the chain
+
+### Day 3 — Smart Contracts & Solidity
+- What is a Smart Contract and how EVM executes it
+- Solidity syntax: pragma, contract, constructor, functions
+- State variables vs memory vs storage
+- msg.sender — the caller's wallet address
+- Gas — why every state change costs ETH
+- View functions — free read-only calls
+- Deployed HelloWorld.sol + SimpleStorage.sol on Sepolia
 
 ---
 
 ## 🛠️ Tech Stack
 
 ```
-Languages  : Python, Solidity (learning)
+Languages  : Python, Solidity
 AI Stack   : LLMs, LangChain, OpenAI, HuggingFace
-Web3 Stack : Ethereum, Web3.py, MetaMask, Etherscan
+Web3 Stack : Ethereum, Web3.py, MetaMask, Remix IDE, Etherscan
 Tools      : VS Code, Git, GitHub, Docker
 ```
 
