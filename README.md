@@ -33,7 +33,10 @@ web3-ai-learning-journey/
 │   ├── SimpleStorage.sol      ← mappings + msg.sender
 │   ├── notes.md
 │   └── evm-explained.md
-├── day-04-erc20-tokens/          ← coming soon
+├── day-04-erc20-tokens/
+│   ├── GopichandToken.sol     ← ERC-20 token from scratch
+│   ├── notes.md
+│   └── erc20-explained.md    ← beginner breakdown
 ├── day-05-defi-uniswap/          ← coming soon
 ├── day-06-ai-agent-onchain/      ← coming soon
 ├── day-07-full-project/          ← coming soon
@@ -49,7 +52,7 @@ web3-ai-learning-journey/
 | ✅ 01 | Mar 04, 2026 | Wallets, Transactions, MetaMask | MetaMask setup + first test ETH | Done |
 | ✅ 02 | Mar 05, 2026 | Hashing, Blocks, Chains, PoW vs PoS | [Mini Blockchain in Python](./day-02-hashing-blocks-chains/blockchain.py) | Done |
 | ✅ 03 | Mar 06, 2026 | Smart Contracts, Solidity, EVM | [HelloWorld.sol](./day-03-smart-contracts/HelloWorld.sol) + [SimpleStorage.sol](./day-03-smart-contracts/SimpleStorage.sol) | Done |
-| ⏳ 04 | Mar 07, 2026 | ERC-20 Tokens | Coming | Upcoming |
+| ✅ 04 | Mar 07, 2026 | ERC-20 Tokens, Standards, DeFi patterns | [GopichandToken.sol](./day-04-erc20-tokens/GopichandToken.sol) — $GOPI token | Done |
 | ⏳ 05 | Mar 08, 2026 | DeFi — Uniswap, liquidity pools | Coming | Upcoming |
 | ⏳ 06 | Mar 09, 2026 | AI Agent on-chain | Coming | Upcoming |
 | ⏳ 07 | Mar 10, 2026 | Full AI × Web3 mini project | Coming | Upcoming |
@@ -81,6 +84,15 @@ web3-ai-learning-journey/
 - View functions — free read-only calls
 - Deployed HelloWorld.sol + SimpleStorage.sol on Sepolia
 
+### Day 4 — ERC-20 Tokens 🪙
+- What is ERC-20 and why standards matter
+- Core token functions: transfer, approve, transferFrom, mint, burn
+- The approve → transferFrom pattern (how DeFi works)
+- Why decimals = 18 (no floats in Solidity)
+- Events: Transfer and Approval logged permanently on-chain
+- Built GopichandToken ($GOPI) — 1,000,000 supply ERC-20 from scratch
+- Tested all functions: transfer ✅ approve ✅ mint ✅ burn ✅
+
 ---
 
 ## 🛠️ Tech Stack
@@ -91,6 +103,14 @@ AI Stack   : LLMs, LangChain, OpenAI, HuggingFace
 Web3 Stack : Ethereum, Web3.py, MetaMask, Remix IDE, Etherscan
 Tools      : VS Code, Git, GitHub, Docker
 ```
+
+---
+
+## 🪙 Tokens Built
+
+| Token | Symbol | Supply | Day | File |
+|---|---|---|---|---|
+| GopichandToken | $GOPI | 1,000,000 | Day 04 | [GopichandToken.sol](./day-04-erc20-tokens/GopichandToken.sol) |
 
 ---
 
