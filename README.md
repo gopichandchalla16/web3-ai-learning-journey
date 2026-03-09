@@ -37,7 +37,10 @@ web3-ai-learning-journey/
 │   ├── GopichandToken.sol     ← ERC-20 token from scratch
 │   ├── notes.md
 │   └── erc20-explained.md    ← beginner breakdown
-├── day-05-defi-uniswap/          ← coming soon
+├── day-05-web3py-onchain-reads/
+│   ├── query_gopi_token.py    ← Python reads live ERC-20 on Sepolia
+│   ├── notes.md
+│   └── web3py-explained.md
 ├── day-06-ai-agent-onchain/      ← coming soon
 ├── day-07-full-project/          ← coming soon
 └── README.md
@@ -53,8 +56,8 @@ web3-ai-learning-journey/
 | ✅ 02 | Mar 05, 2026 | Hashing, Blocks, Chains, PoW vs PoS | [Mini Blockchain in Python](./day-02-hashing-blocks-chains/blockchain.py) | Done |
 | ✅ 03 | Mar 06, 2026 | Smart Contracts, Solidity, EVM | [HelloWorld.sol](./day-03-smart-contracts/HelloWorld.sol) + [SimpleStorage.sol](./day-03-smart-contracts/SimpleStorage.sol) | Done |
 | ✅ 04 | Mar 07, 2026 | ERC-20 Tokens, Standards, DeFi patterns | [GopichandToken.sol](./day-04-erc20-tokens/GopichandToken.sol) — $GOPI token | Done |
-| ⏳ 05 | Mar 08, 2026 | DeFi — Uniswap, liquidity pools | Coming | Upcoming |
-| ⏳ 06 | Mar 09, 2026 | AI Agent on-chain | Coming | Upcoming |
+| ✅ 05 | Mar 08, 2026 | Web3.py — Reading live on-chain data with Python | [query_gopi_token.py](./day-05-web3py-onchain-reads/query_gopi_token.py) — Python reads $GOPI from Sepolia | Done |
+| ⏳ 06 | Mar 09, 2026 | AI Agent on-chain | Coming | In Progress |
 | ⏳ 07 | Mar 10, 2026 | Full AI × Web3 mini project | Coming | Upcoming |
 
 ---
@@ -93,6 +96,14 @@ web3-ai-learning-journey/
 - Built GopichandToken ($GOPI) — 1,000,000 supply ERC-20 from scratch
 - Tested all functions: transfer ✅ approve ✅ mint ✅ burn ✅
 
+### Day 5 — Web3.py + On-Chain Reads 🐍
+- What is Web3.py and why Python devs need it for Web3
+- How to connect to Ethereum via Alchemy RPC endpoint
+- What an ABI is and why Web3.py needs it to talk to contracts
+- Reading on-chain state: totalSupply, balanceOf, decimals, name, symbol
+- The difference between a read call (free) vs a write transaction (gas)
+- Connected Python directly to my own $GOPI ERC-20 on Sepolia testnet
+
 ---
 
 ## 🛠️ Tech Stack
@@ -100,7 +111,7 @@ web3-ai-learning-journey/
 ```
 Languages  : Python, Solidity
 AI Stack   : LLMs, LangChain, OpenAI, HuggingFace
-Web3 Stack : Ethereum, Web3.py, MetaMask, Remix IDE, Etherscan
+Web3 Stack : Ethereum, Web3.py, MetaMask, Remix IDE, Etherscan, Alchemy
 Tools      : VS Code, Git, GitHub, Docker
 ```
 
