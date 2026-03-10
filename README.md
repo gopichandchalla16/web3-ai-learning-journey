@@ -29,20 +29,23 @@ web3-ai-learning-journey/
 │   ├── notes.md
 │   └── sha256-demo.md
 ├── day-03-smart-contracts/
-│   ├── HelloWorld.sol         ← first Solidity contract
-│   ├── SimpleStorage.sol      ← mappings + msg.sender
+│   ├── HelloWorld.sol
+│   ├── SimpleStorage.sol
 │   ├── notes.md
 │   └── evm-explained.md
 ├── day-04-erc20-tokens/
-│   ├── GopichandToken.sol     ← ERC-20 token from scratch
+│   ├── GopichandToken.sol
 │   ├── notes.md
-│   └── erc20-explained.md    ← beginner breakdown
+│   └── erc20-explained.md
 ├── day-05-web3py-onchain-reads/
-│   ├── query_gopi_token.py    ← Python reads live ERC-20 on Sepolia
+│   ├── query_gopi_token.py
 │   ├── notes.md
 │   └── web3py-explained.md
-├── day-06-ai-agent-onchain/      ← coming soon
-├── day-07-full-project/          ← coming soon
+├── day-06-ai-agent-onchain/      ← TODAY ✅
+│   ├── wallet_agent.py
+│   ├── notes.md
+│   └── langchain-web3-explained.md
+├── day-07-full-project/          ← coming tomorrow
 └── README.md
 ```
 
@@ -56,8 +59,8 @@ web3-ai-learning-journey/
 | ✅ 02 | Mar 05, 2026 | Hashing, Blocks, Chains, PoW vs PoS | [Mini Blockchain in Python](./day-02-hashing-blocks-chains/blockchain.py) | Done |
 | ✅ 03 | Mar 06, 2026 | Smart Contracts, Solidity, EVM | [HelloWorld.sol](./day-03-smart-contracts/HelloWorld.sol) + [SimpleStorage.sol](./day-03-smart-contracts/SimpleStorage.sol) | Done |
 | ✅ 04 | Mar 07, 2026 | ERC-20 Tokens, Standards, DeFi patterns | [GopichandToken.sol](./day-04-erc20-tokens/GopichandToken.sol) — $GOPI token | Done |
-| ✅ 05 | Mar 08, 2026 | Web3.py — Reading live on-chain data with Python | [query_gopi_token.py](./day-05-web3py-onchain-reads/query_gopi_token.py) — Python reads $GOPI from Sepolia | Done |
-| ⏳ 06 | Mar 09, 2026 | AI Agent on-chain | Coming | In Progress |
+| ✅ 05 | Mar 08, 2026 | Web3.py — Reading live on-chain data | [query_gopi_token.py](./day-05-web3py-onchain-reads/query_gopi_token.py) — Python reads wallets live | Done |
+| ✅ 06 | Mar 09, 2026 | AI Agent on-chain — LangChain + Web3.py | [wallet_agent.py](./day-06-ai-agent-onchain/wallet_agent.py) — AI reads blockchain | Done |
 | ⏳ 07 | Mar 10, 2026 | Full AI × Web3 mini project | Coming | Upcoming |
 
 ---
@@ -94,15 +97,20 @@ web3-ai-learning-journey/
 - Why decimals = 18 (no floats in Solidity)
 - Events: Transfer and Approval logged permanently on-chain
 - Built GopichandToken ($GOPI) — 1,000,000 supply ERC-20 from scratch
-- Tested all functions: transfer ✅ approve ✅ mint ✅ burn ✅
 
 ### Day 5 — Web3.py + On-Chain Reads 🐍
 - What is Web3.py and why Python devs need it for Web3
 - How to connect to Ethereum via Alchemy RPC endpoint
-- What an ABI is and why Web3.py needs it to talk to contracts
-- Reading on-chain state: totalSupply, balanceOf, decimals, name, symbol
-- The difference between a read call (free) vs a write transaction (gas)
-- Connected Python directly to my own $GOPI ERC-20 on Sepolia testnet
+- What an ABI is and why Web3.py needs it
+- Reading on-chain state: balanceOf, totalSupply, decimals
+- Read Vitalik's live wallet balance — 42.98 ETH on Sepolia
+
+### Day 6 — AI Agent on-chain 🤖
+- What is a LangChain agent and how tools work
+- How to give an LLM a Web3.py tool
+- Agent reads any wallet address on Ethereum
+- LLM explains the balance in plain English
+- The bridge between AI and blockchain is just a Python function
 
 ---
 
@@ -110,9 +118,9 @@ web3-ai-learning-journey/
 
 ```
 Languages  : Python, Solidity
-AI Stack   : LLMs, LangChain, OpenAI, HuggingFace
+AI Stack   : LLMs, LangChain, OpenAI, Groq (Llama 3)
 Web3 Stack : Ethereum, Web3.py, MetaMask, Remix IDE, Etherscan, Alchemy
-Tools      : VS Code, Git, GitHub, Docker
+Tools      : VS Code, Git, GitHub, Google Colab
 ```
 
 ---
