@@ -16,39 +16,27 @@ pip install web3
 
 ---
 
-## Connect to Ethereum
+## Connect to Ethereum (Safe Way)
 ```python
 from web3 import Web3
+import os
 
-# Option 1: Alchemy (recommended, free)
-w3 = Web3(Web3.HTTPProvider("https://eth-sepolia.g.alchemy.com/v2/YOUR_KEY"))
+# Load from environment variable — never hardcode API keys!
+ALCHEMY_URL = os.environ.get("ALCHEMY_URL")
 
-# Option 2: Local node
-w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
-
+w3 = Web3(Web3.HTTPProvider(ALCHEMY_URL))
 print(w3.is_connected())    # True
 print(w3.eth.block_number)  # latest block number
 ```
 
 ---
 
-## Read From Any ERC-20 Token
+## Get ETH Balance of Any Wallet
 ```python
-from web3 import Web3
-
-w3 = Web3(Web3.HTTPProvider("YOUR_ALCHEMY_URL"))
-
-abi = [
-    {"inputs": [], "name": "name",        "outputs": [{"type": "string"}],  "stateMutability": "view", "type": "function"},
-    {"inputs": [], "name": "totalSupply", "outputs": [{"type": "uint256"}], "stateMutability": "view", "type": "function"},
-    {"inputs": [], "name": "decimals",    "outputs": [{"type": "uint8"}],   "stateMutability": "view", "type": "function"},
-]
-
-contract = w3.eth.contract(address=Web3.to_checksum_address("CONTRACT_ADDRESS"), abi=abi)
-
-print(contract.functions.name().call())          # GopichandToken
-print(contract.functions.totalSupply().call())   # 1000000000000000000000000
-print(contract.functions.decimals().call())      # 18
+address = "0xYourWalletAddress"
+balance_wei = w3.eth.get_balance(Web3.to_checksum_address(address))
+balance_eth = w3.from_wei(balance_wei, 'ether')
+print(f"Balance: {balance_eth:.4f} ETH")
 ```
 
 ---
@@ -67,20 +55,22 @@ print(contract.functions.decimals().call())      # 18
 
 ---
 
-## Get ETH Balance of Any Wallet
-```python
-address = "0xYourWalletAddress"
-balance_wei = w3.eth.get_balance(Web3.to_checksum_address(address))
-balance_eth = w3.from_wei(balance_wei, 'ether')
-print(f"Balance: {balance_eth:.4f} ETH")
+## ⚠️ Security Rules
+
 ```
+NEVER do this:
+ALCHEMY_URL = "https://eth-sepolia.g.alchemy.com/v2/abc123"  ❌
+
+ALWAYS do this:
+ALCHEMY_URL = os.environ.get("ALCHEMY_URL")  ✅
+```
+
+1. Create a `.env` file locally with your real key
+2. Add `.env` to your `.gitignore`
+3. Only commit `.env.example` with placeholder values
+4. Never paste real keys in code you push to GitHub
 
 ---
 
 ## What's Next (Day 06)
-Combine Web3.py with LangChain to build an AI agent that:  
-→ Takes a wallet address as input  
-→ Reads the ETH balance on-chain  
-→ Returns a plain-English summary using an LLM
-
-That's the bridge between AI and Web3.
+Combine Web3.py with LangChain to build an AI agent that reads wallet balances and explains them in plain English.

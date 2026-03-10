@@ -1,55 +1,26 @@
-# Day 05 — Web3.py: Reading $GOPI ERC-20 Token On-Chain
+# Day 05 — Web3.py: Reading On-Chain Data
 # Gopichand Challa | @GopichandAI
-# Connected Python directly to my own ERC-20 token on Ethereum Sepolia
+# ⚠️  Never hardcode API keys. Use environment variables.
 
 from web3 import Web3
+import os
 
-# ── CONFIG ──────────────────────────────────────────────
-# Get your free Alchemy URL: https://alchemy.com → Create App → Ethereum → Sepolia
-ALCHEMY_URL = "https://eth-sepolia.g.alchemy.com/v2/YOUR_API_KEY"
+# ── LOAD FROM ENVIRONMENT (safe) ─────────────────────────
+# Create a .env file locally with: ALCHEMY_URL=https://eth-sepolia.g.alchemy.com/v2/YOUR_KEY
+# Never commit your .env file to GitHub!
+ALCHEMY_URL = os.environ.get("ALCHEMY_URL", "https://eth-sepolia.g.alchemy.com/v2/YOUR_KEY_HERE")
 
-# Your deployed $GOPI contract address on Sepolia
-CONTRACT_ADDRESS = "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4"  # replace with yours
-
-# Minimal ERC-20 ABI — only the read functions we need
-ERC20_ABI = [
-    {"inputs": [], "name": "name",        "outputs": [{"type": "string"}], "stateMutability": "view", "type": "function"},
-    {"inputs": [], "name": "symbol",      "outputs": [{"type": "string"}], "stateMutability": "view", "type": "function"},
-    {"inputs": [], "name": "decimals",    "outputs": [{"type": "uint8"}],  "stateMutability": "view", "type": "function"},
-    {"inputs": [], "name": "totalSupply", "outputs": [{"type": "uint256"}],"stateMutability": "view", "type": "function"},
-    {"inputs": [{"name": "account", "type": "address"}],
-     "name": "balanceOf", "outputs": [{"type": "uint256"}], "stateMutability": "view", "type": "function"},
-]
-
-# ── CONNECT ─────────────────────────────────────────────
 w3 = Web3(Web3.HTTPProvider(ALCHEMY_URL))
+print("Connected:", w3.is_connected())
+print(f"Latest Block: {w3.eth.block_number}")
 
-if not w3.is_connected():
-    print("❌ Connection failed. Check your Alchemy URL.")
-    exit()
+# ── READ WALLET BALANCE ──────────────────────────────────
+my_wallet = "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4"
+vitalik   = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
 
-print("✅ Connected to Ethereum Sepolia via Alchemy")
-print(f"   Latest block: {w3.eth.block_number}\n")
+for label, addr in [("My Wallet", my_wallet), ("Vitalik", vitalik)]:
+    bal_wei = w3.eth.get_balance(Web3.to_checksum_address(addr))
+    bal_eth = w3.from_wei(bal_wei, 'ether')
+    print(f"  {label}: {bal_eth:.6f} ETH")
 
-# ── READ CONTRACT ────────────────────────────────────────
-contract = w3.eth.contract(
-    address=Web3.to_checksum_address(CONTRACT_ADDRESS),
-    abi=ERC20_ABI
-)
-
-name        = contract.functions.name().call()
-symbol      = contract.functions.symbol().call()
-decimals    = contract.functions.decimals().call()
-total_raw   = contract.functions.totalSupply().call()
-total_human = total_raw / (10 ** decimals)
-
-# ── OUTPUT ───────────────────────────────────────────────
-print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-print(f"  Token Name   : {name}")
-print(f"  Symbol       : ${symbol}")
-print(f"  Decimals     : {decimals}")
-print(f"  Total Supply : {total_human:,.0f} {symbol}")
-print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-print()
-print("✅ Day 05 complete — Python is talking to Ethereum.")
-print("   The blockchain IS the database. No backend needed.")
+print("\n✅ Web3.py reading live Ethereum data!")
