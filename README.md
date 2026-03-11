@@ -41,11 +41,16 @@ web3-ai-learning-journey/
 │   ├── query_gopi_token.py
 │   ├── notes.md
 │   └── web3py-explained.md
-├── day-06-ai-agent-onchain/      ← TODAY ✅
+├── day-06-ai-agent-onchain/
 │   ├── wallet_agent.py
 │   ├── notes.md
 │   └── langchain-web3-explained.md
-├── day-07-full-project/          ← coming tomorrow
+├── day-07-full-project/          ← TODAY ✅
+│   ├── wallet_analyser.py
+│   ├── notes.md
+│   └── project-breakdown.md
+├── .env.example
+├── .gitignore
 └── README.md
 ```
 
@@ -61,56 +66,43 @@ web3-ai-learning-journey/
 | ✅ 04 | Mar 07, 2026 | ERC-20 Tokens, Standards, DeFi patterns | [GopichandToken.sol](./day-04-erc20-tokens/GopichandToken.sol) — $GOPI token | Done |
 | ✅ 05 | Mar 08, 2026 | Web3.py — Reading live on-chain data | [query_gopi_token.py](./day-05-web3py-onchain-reads/query_gopi_token.py) — Python reads wallets live | Done |
 | ✅ 06 | Mar 09, 2026 | AI Agent on-chain — LangChain + Web3.py | [wallet_agent.py](./day-06-ai-agent-onchain/wallet_agent.py) — AI reads blockchain | Done |
-| ⏳ 07 | Mar 10, 2026 | Full AI × Web3 mini project | Coming | Upcoming |
+| ✅ 07 | Mar 10, 2026 | Full AI × Web3 Mini Project | [wallet_analyser.py](./day-07-full-project/wallet_analyser.py) — Complete wallet analyser | Done |
 
 ---
 
-## 🔥 Key Concepts Covered So Far
+## 🔥 Key Concepts Covered
 
 ### Day 1 — Wallets & Transactions
-- What is a crypto wallet (EOA)
-- Public key vs private key
+- What is a crypto wallet (EOA), public key vs private key
 - How transactions are signed and broadcast
 - MetaMask setup on Ethereum Sepolia testnet
 
 ### Day 2 — Hashing, Blocks & Chains
-- SHA-256 hashing — deterministic, one-way
-- How blocks chain together via prev_hash
-- What is a nonce and Proof of Work
-- Proof of Work vs Proof of Stake (The Merge)
+- SHA-256 hashing, how blocks chain together via prev_hash
+- Proof of Work vs Proof of Stake
 - Built a working blockchain in 60 lines of Python
-- Proved immutability by tampering and breaking the chain
 
 ### Day 3 — Smart Contracts & Solidity
-- What is a Smart Contract and how EVM executes it
-- Solidity syntax: pragma, contract, constructor, functions
-- State variables vs memory vs storage
-- msg.sender — the caller's wallet address
-- Gas — why every state change costs ETH
-- View functions — free read-only calls
+- EVM execution, Solidity syntax, msg.sender, gas
 - Deployed HelloWorld.sol + SimpleStorage.sol on Sepolia
 
 ### Day 4 — ERC-20 Tokens 🪙
-- What is ERC-20 and why standards matter
-- Core token functions: transfer, approve, transferFrom, mint, burn
-- The approve → transferFrom pattern (how DeFi works)
-- Why decimals = 18 (no floats in Solidity)
-- Events: Transfer and Approval logged permanently on-chain
-- Built GopichandToken ($GOPI) — 1,000,000 supply ERC-20 from scratch
+- transfer, approve, transferFrom, mint, burn
+- Built GopichandToken ($GOPI) — 1,000,000 supply ERC-20
 
 ### Day 5 — Web3.py + On-Chain Reads 🐍
-- What is Web3.py and why Python devs need it for Web3
-- How to connect to Ethereum via Alchemy RPC endpoint
-- What an ABI is and why Web3.py needs it
-- Reading on-chain state: balanceOf, totalSupply, decimals
-- Read Vitalik's live wallet balance — 42.98 ETH on Sepolia
+- Connected Python to Ethereum via Alchemy RPC
+- Read Vitalik’s live wallet balance on Sepolia
 
 ### Day 6 — AI Agent on-chain 🤖
-- What is a LangChain agent and how tools work
-- How to give an LLM a Web3.py tool
-- Agent reads any wallet address on Ethereum
-- LLM explains the balance in plain English
-- The bridge between AI and blockchain is just a Python function
+- LangChain agent with Web3.py tool
+- AI reads any wallet and explains in plain English
+
+### Day 7 — Full AI × Web3 Mini Project 🚀
+- Complete wallet analyser combining all 7 days
+- Reads ETH balance, latest block, wallet activity summary
+- AI generates plain-English report for any wallet
+- Everything built with free tools: Web3.py + Alchemy + Python
 
 ---
 
@@ -118,9 +110,10 @@ web3-ai-learning-journey/
 
 ```
 Languages  : Python, Solidity
-AI Stack   : LLMs, LangChain, OpenAI, Groq (Llama 3)
+AI Stack   : LLMs, LangChain, Groq (Llama 3 — free)
 Web3 Stack : Ethereum, Web3.py, MetaMask, Remix IDE, Etherscan, Alchemy
 Tools      : VS Code, Git, GitHub, Google Colab
+Security   : .env for all keys, .gitignore blocks secrets
 ```
 
 ---
