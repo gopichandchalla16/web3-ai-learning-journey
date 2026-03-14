@@ -1,0 +1,4 @@
+langchain-groq==0.1.9
+langchain==0.2.16
+python-dotenv==1.0.1
+web3==6.20.3
